@@ -3,17 +3,22 @@ import { AppController } from './app.controller';
 import {UsuarioController} from "./usuarioController";
 import {ParametrosController} from "./parametros.controller";
 import {LogMiddleware} from "./log.middleware";
+import {UsuarioService} from "./usuario.service";
 
 @Module({
   imports: [//OtrosModulos
 
   ],
+    providers: [
+        UsuarioService
+    ],
   controllers: [//Controladores
       AppController,
       UsuarioController,
       ParametrosController
   ],
   components: [
+
 
   ],
 })
