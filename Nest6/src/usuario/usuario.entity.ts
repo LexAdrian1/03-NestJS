@@ -1,15 +1,19 @@
-import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {FotoEntity} from "../fotos/foto.entity";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {FotoEntity} from "../foto/foto.entity";
 
-@Entity('web_miranda_usuario')
-export class  UsuarioEntity {
-    @PrimaryGeneratedColumn() 
+@Entity('web_eguezv_usuario')
+export class UsuarioEntity {
+
+    @PrimaryGeneratedColumn()
     id: number;
 
-    @Column('text')
+    @Column({length: 50})
     nombre: string;
 
-    @OneToMany(type => FotoEntity, fotoEntity => fotoEntity.usuarioId)
+    @OneToMany(
+        type => FotoEntity,
+        fotoEntity => fotoEntity.usuario)
     fotos: FotoEntity[];
+
 
 }

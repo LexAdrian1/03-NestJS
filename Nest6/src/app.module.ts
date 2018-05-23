@@ -5,12 +5,13 @@ import {UsuarioController} from "./usuario.controller";
 import {UsuarioService} from "./usuario.service";
 import {ParametrosController} from "./parametros.controller";
 import {LogMiddleware} from './log.middleware';
+
 import {TypeOrmModule} from '@nestjs/typeorm';
 import {UsuarioEntity} from "./usuario/usuario.entity";
-import {FotoEntity} from "./fotos/foto.entity";
+import {FotoEntity} from "./foto/foto.entity";
 
 @Module({
-    imports: [//OotrosModulos
+    imports: [
         TypeOrmModule.forRoot({
             type: 'mysql',
             host: 'web2018agr2.mysql.database.azure.com',
@@ -18,12 +19,18 @@ import {FotoEntity} from "./fotos/foto.entity";
             username: 'profesor@web2018agr2',
             password: 'Javascript1',
             database: 'web',
-            entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+            entities: [
+                __dirname +
+                '/../**/*.entity{.ts,.js}'
+            ],
             synchronize: true,
-            ssl:true,
+            ssl: true
         }),
-        TypeOrmModule.forFeature([UsuarioEntity,FotoEntity]),//Entidades
-        ],
+        TypeOrmModule.forFeature([
+            UsuarioEntity,
+            FotoEntity
+        ])
+    ],
     controllers: [
         AppController,
         UsuarioController,
